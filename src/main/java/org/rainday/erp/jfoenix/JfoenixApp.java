@@ -22,7 +22,7 @@ public class JfoenixApp extends Application {
         
     
     
-        Parent root = FXMLLoader.load(getClass().getResource("Popup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Popup.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -9,7 +9,7 @@ module erp.main {
     requires org.kordamp.bootstrapfx.core;
     requires org.controlsfx.controls;
     
-    opens org.rainday.erp.jfoenix.controller to javafx.fxml, javafx.graphics;
+    opens org.rainday.erp.jfoenix.controller to javafx.fxml, javafx.graphics, javafx.base;
     
     
     exports org.rainday.erp.bootstrap;
