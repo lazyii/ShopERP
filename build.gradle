@@ -1,0 +1,51 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'org.beryx.jlink' version '2.23.3'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://repo.huaweicloud.com/repository/maven/"
+        }
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.10'
+    implementation 'org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0'
+    implementation group: 'org.controlsfx', name: 'controlsfx', version: '11.1.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+
+
+javafx {
+    version = "13"
+    modules = ['javafx.controls', 'javafx.graphics', 'javafx.fxml']
+}
+/*application {
+    mainModule = 'erp.main'
+    mainClassName = 'org.rainday.erp.jfoenix.JfoenixApp'
+}*/
+mainClassName = "$moduleName/org.rainday.erp.jfoenix.JfoenixApp"
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'erp'
+    }
+}
