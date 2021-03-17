@@ -4,7 +4,7 @@ plugins {
     id 'org.beryx.jlink' version '2.23.3'
 }
 
-group 'org.example'
+group 'org.rainday'
 version '1.0-SNAPSHOT'
 
 allprojects {
@@ -33,8 +33,12 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    jvmArgs = ['-Djdk.gtk.version=2'] // required due to a bug in Java: https://github.com/javafxports/openjdk-jfx/issues/175
 }
 
+run {
+    jvmArgs = ['-Djdk.gtk.version=2'] // required due to a bug in Java: https://github.com/javafxports/openjdk-jfx/issues/175
+}
 
 javafx {
     version = "13"
@@ -47,10 +51,11 @@ application {
 
     applicationDefaultJvmArgs = [
 //            "-Dprism.order=d3d,es2,es1,sw,j2d",
-//            "-Dsun.java2d.opengl=true",
 //            "-Dprism.forceGPU=true",
 //            "-Dprism.lcdtext=true",
 //            "-Dprism.vsync=false",
+//            "-Dsun.java2d.opengl=true",
+            "-Djdk.gtk.version=2",// required due to a bug in Java: https://github.com/javafxports/openjdk-jfx/issues/175
 
             "--add-opens=java.base/java.lang.reflect=com.jfoenix",
             "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
