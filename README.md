@@ -1,2 +1,3 @@
-# ShopERP
-javafx erp system.  openjfx,h2,vertx
+# kfoenix
+
+javafx erp system.  openjfx,h2,vertx with kotlin
